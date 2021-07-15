@@ -33,7 +33,7 @@ def guess(x):
 			print('you guessed too low...')
 	print(f'Congratulations!! You guessed the right number. The number was {random_number}.')
 
-guess(10)
+guess(int(input('Give the range of numbers for the game. 1 to ??: ')))
 #----------------------------------------------------------------------------------------------------------------------------
 
 
