@@ -8,11 +8,10 @@ import random
 #----------------------------------------------------------------------------------------------------------------------------
 # Body
 print("""
-  _____                    __  __                          __          
- / ___/_ _____ ___ ___    / /_/ /  ___    ___  __ ____ _  / /  ___ ____
-/ (_ / // / -_|_-<(_-<   / __/ _ \/ -_)  / _ \/ // /  ' \/ _ \/ -_) __/
-\___/\_,_/\__/___/___/   \__/_//_/\__/  /_//_/\_,_/_/_/_/_.__/\__/_/   
-
+  _____                    __  __                          __                  ___ 
+ / ___/_ _____ ___ ___    / /_/ /  ___    ___  __ ____ _  / /  ___ ____  _  __|_  |
+/ (_ / // / -_|_-<(_-<   / __/ _ \/ -_)  / _ \/ // /  ' \/ _ \/ -_) __/ | |/ / __/ 
+\___/\_,_/\__/___/___/   \__/_//_/\__/  /_//_/\_,_/_/_/_/_.__/\__/_/    |___/____/ 
 """)
 
 #----------------------------------------------------------------------------------------------------------------------------
@@ -21,18 +20,31 @@ print("""
 
 #----------------------------------------------------------------------------------------------------------------------------
 # Main Function
-def guess(x):
-	random_number = random.randint(1, x)
+def computer_guess(x):
+	low = 1
+	high = x
+	feedback = ''
+	counter = 0
 	guess = 0
-	while guess != random_number:
-		guess = int(input(f'Guess a number between 1 and {x}: '))
-		if guess > random_number:
-			print('you guessed too high...')
-		elif guess < random_number:
-			print('you guessed too low...')
-	print(f'Congratulations!! You guessed the right number. The number was {random_number}.')
+	while True:
+		if high == low:
+			print(f'Due the bounds defined by your feedback, the number has to be {high}. You took {counter} turns.')
+			break
+		counter += 1
+		guess = random.randint(low,high)
+		feedback = input(f'Is {guess} too high (H), too low (L), or correct (C)?? ').lower()
+		if feedback == 'l':
+			low = guess + 1
+		elif feedback == 'h':
+			high = guess - 1
+		elif feedback == 'c':
+			print(f'Hooray!! I guessed the number. It was {guess}. You took {counter} turns.')
+			break
+computer_guess(int(input('Give the range of numbers for the game. 1 to ??: ')))
 
-guess(int(input('Give the range of numbers for the game. 1 to ??: ')))
+
+
+
 #----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -42,3 +54,4 @@ guess(int(input('Give the range of numbers for the game. 1 to ??: ')))
 
 ############################################################################################################################# 
 #############################################################################################################################
+	
