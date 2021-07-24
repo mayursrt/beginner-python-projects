@@ -3,6 +3,7 @@
 from words import words
 import random
 import string
+from hangman_visual import lives_visual_dict
 #----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -23,13 +24,14 @@ def hangman():
 	used_letters = set()
 	alphabet = set(string.ascii_uppercase)
 
-	lives = 6
+	lives = 7
 
 
 	while len(word_letters) > 0 and lives > 0:
 		print(f'You have {lives} lives left. You have used these letters: ', ' '.join(used_letters))
 
 		word_list = [letter if letter in used_letters else '_' for letter in word]
+		print(lives_visual_dict[lives])
 		print('Current Word: ', ' '.join(word_list))
 
 		user_letter = str(input('Enter an Alphabet: ').upper())
@@ -51,17 +53,13 @@ def hangman():
 		else:
 			print('Invalid Character. Please try again.')
 	if lives == 0:
+		print(lives_visual_dict[lives])
 		print(f'Sorry, you lost!! You have 0 lives remaining. The word was {word}')
 	else:
 		print(f'Congratulations you guessed the word correctly. The word is {word}')
 
 hangman()
-# word = random.choice(words).upper()
-# word_letters = set(word)
-# alphabet = set(string.ascii_uppercase)
 
-# print(word,alphabet, word_letters)
-# print(alphabet-word_letters)
 #----------------------------------------------------------------------------------------------------------------------------
 
 
