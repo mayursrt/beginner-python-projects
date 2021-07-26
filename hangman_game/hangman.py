@@ -7,7 +7,13 @@ from hangman_visual import lives_visual_dict
 #----------------------------------------------------------------------------------------------------------------------------
 
 
-
+print("""
+  _  _   _   _  _  ___ __  __   _   _  _ 
+ | || | /_\ | \| |/ __|  \/  | /_\ | \| |
+ | __ |/ _ \| .` | (_ | |\/| |/ _ \| .` |
+ |_||_/_/ \_\_|\_|\___|_|  |_/_/ \_\_|\_|
+                                         
+	""")
 
 #----------------------------------------------------------------------------------------------------------------------------
 # Body
@@ -28,12 +34,14 @@ def hangman():
 
 
 	while len(word_letters) > 0 and lives > 0:
-		print(f'You have {lives} lives left. You have used these letters: ', ' '.join(used_letters))
+		
 
 		word_list = [letter if letter in used_letters else '_' for letter in word]
 		print(lives_visual_dict[lives])
 		print('Current Word: ', ' '.join(word_list))
 
+		print(f'You have {lives} lives left.')
+		print(f'You have used these letters: ', ' '.join(used_letters))
 		user_letter = str(input('Enter an Alphabet: ').upper())
 		
 		if user_letter in alphabet - used_letters:
